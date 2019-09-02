@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { Image, SafeAreaView, ScrollView, View, StyleSheet, Text } from 'react-native';
+import FooterTabs from '../../components/FooterTabs';
+import { Button } from 'native-base';
 
 const dummyUri = "https://www.fietsenwinkel.nl/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/c/o/cortina_e-u1_n3_dames_elektrische_fiets_zijaanzicht.jpg";
 const SingleItemPage = () => {
@@ -20,14 +22,11 @@ const SingleItemPage = () => {
             <View style={styles.descriptionContainer}>
               <Text style={styles.description}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...</Text>
             </View>
-            <View style={styles.readMoreButtonContainer}>
+            <Button transparent style={styles.readMoreButtonContainer}>
               <Text style={styles.readMoreButton}>Read more</Text>
-            </View>
+            </Button>
           </View>
         </ScrollView>
-        <View style={styles.footerContainer}>
-
-        </View>
       </SafeAreaView>
     </Fragment>
   );
@@ -68,12 +67,6 @@ const styles = StyleSheet.create({
   },
   readMoreButton: {
 
-  },
-  footerContainer: {
-    position: 'absolute',
-    bottom: 0,
-    backgroundColor: 'aqua',
-    height: 100
   }
 });
 

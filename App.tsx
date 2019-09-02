@@ -9,17 +9,41 @@
  */
 
 import React, {Fragment} from 'react';
-import { StatusBar } from 'react-native';
+import { YellowBox, StatusBar } from 'react-native';
+import { Container, Header, Content, Footer, FooterTab, Button, Text } from 'native-base';
+
+YellowBox.ignoreWarnings([
+  'Warning: componentWillMount is deprecated',
+  'Warning: componentWillReceiveProps is deprecated',
+  'Module RCTImageLoader requires',
+]);
 
 import SearchPage from './src/pages/searchPage';
 import SingleItemPage from './src/pages/singleItemPage';
 
 const App = () => (
-  <Fragment>
-    <StatusBar barStyle="dark-content" />
-    {/*<SearchPage />*/}
-    <SingleItemPage />
-  </Fragment>
+  <Container>
+    <Header>
+      <StatusBar barStyle="dark-content" />
+    </Header>
+    <Content>
+      {/*<SearchPage />*/}
+      <SingleItemPage />
+    </Content>
+    <Footer>
+      <FooterTab>
+        <Button active>
+          <Text>Search</Text>
+        </Button>
+        <Button>
+          <Text>Cart</Text>
+        </Button>
+        <Button>
+          <Text>Account</Text>
+        </Button>
+      </FooterTab>
+    </Footer>
+  </Container>
 );
 
 export default App;
