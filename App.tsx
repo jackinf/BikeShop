@@ -12,11 +12,13 @@ import React, {Fragment} from 'react';
 import { StatusBar } from 'react-native';
 
 import SearchPage from './src/pages/searchPage';
+import SingleItemPage from './src/pages/singleItemPage';
 
 const App = () => (
   <Fragment>
     <StatusBar barStyle="dark-content" />
-    <SearchPage />
+    {/*<SearchPage />*/}
+    <SingleItemPage />
   </Fragment>
 );
 
