@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 
 import SingleItem from './components/SingleItem';
+import { Button, Container, Content, Header, Icon, Input, Item } from 'native-base';
+import FooterTabs from '../../components/FooterTabs';
 
 const dummyItems = [{
   title: 'Gazelle Orange C7+ HFP 2019 Dames',
@@ -74,22 +76,37 @@ const dummyItems = [{
 
 const SearchPage = () => (
   <Fragment>
-    <SafeAreaView>
-      <ScrollView>
-        <View style={styles.container}>
-          <View style={styles.headerBlock}>
-            <ImageBackground source={require('./searchPageBackground.jpg')} style={styles.headerBackgroundImage}>
-              <View style={styles.headerBackgroundImageContainer}>
-                <Text style={styles.headerTitle}>The bike shop</Text>
+    <Container>
+      <Header searchBar rounded>
+        <Item>
+          <Icon name="ios-search" />
+          <Input placeholder="Search" />
+          <Icon name="ios-people" />
+        </Item>
+        <Button transparent>
+          <Text>Search</Text>
+        </Button>
+      </Header>
+      <Content>
+        <SafeAreaView>
+          <ScrollView>
+            <View style={styles.container}>
+              <View style={styles.headerBlock}>
+                <ImageBackground source={require('./searchPageBackground.jpg')} style={styles.headerBackgroundImage}>
+                  <View style={styles.headerBackgroundImageContainer}>
+                    <Text style={styles.headerTitle}>The bike shop</Text>
+                  </View>
+                </ImageBackground>
               </View>
-            </ImageBackground>
-          </View>
-          <View style={styles.contentBlock}>
-            {dummyItems.map((item, i) => <SingleItem key={i} item={item} />)}
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+              <View style={styles.contentBlock}>
+                {dummyItems.map((item, i) => <SingleItem key={i} item={item} />)}
+              </View>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </Content>
+      <FooterTabs />
+    </Container>
   </Fragment>
 );
 

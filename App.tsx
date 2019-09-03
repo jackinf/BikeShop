@@ -10,7 +10,9 @@
 
 import React, {Fragment} from 'react';
 import { YellowBox, StatusBar } from 'react-native';
-import { Container, Header, Content, Footer, FooterTab, Button, Text } from 'native-base';
+import { Container, Header, Content, Footer, FooterTab, Button, Text, Item, Icon, Input } from 'native-base';
+import SearchPage from './src/pages/searchPage';
+import SingleItemPage from './src/pages/singleItemPage';
 
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
@@ -18,32 +20,6 @@ YellowBox.ignoreWarnings([
   'Module RCTImageLoader requires',
 ]);
 
-import SearchPage from './src/pages/searchPage';
-import SingleItemPage from './src/pages/singleItemPage';
-
-const App = () => (
-  <Container>
-    <Header>
-      <StatusBar barStyle="dark-content" />
-    </Header>
-    <Content>
-      {/*<SearchPage />*/}
-      <SingleItemPage />
-    </Content>
-    <Footer>
-      <FooterTab>
-        <Button active>
-          <Text>Search</Text>
-        </Button>
-        <Button>
-          <Text>Cart</Text>
-        </Button>
-        <Button>
-          <Text>Account</Text>
-        </Button>
-      </FooterTab>
-    </Footer>
-  </Container>
-);
+const App = () => <SearchPage />;
 
 export default App;
