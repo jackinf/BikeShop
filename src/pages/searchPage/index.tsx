@@ -74,7 +74,7 @@ const dummyItems = [{
   image: 'https://www.fietsenwinkel.nl/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/3/r/3r4a4504b_4.jpg',
 }];
 
-const SearchPage = () => (
+const SearchPage = (props: any) => (
   <Fragment>
     <Container>
       <Header searchBar rounded>
@@ -99,7 +99,13 @@ const SearchPage = () => (
                 </ImageBackground>
               </View>
               <View style={styles.contentBlock}>
-                {dummyItems.map((item, i) => <SingleItem key={i} item={item} />)}
+                {dummyItems.map((item, i) => (
+                  <SingleItem
+                    key={i}
+                    item={item}
+                    onSelected={() => props.navigation.navigate('Details')}
+                  />
+                ))}
               </View>
             </View>
           </ScrollView>

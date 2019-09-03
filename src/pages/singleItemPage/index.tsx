@@ -1,13 +1,28 @@
 import React, { Fragment } from 'react';
 import { Image, SafeAreaView, ScrollView, View, StyleSheet, Text } from 'react-native';
 import FooterTabs from '../../components/FooterTabs';
-import { Button, Container, Content, Header, Icon, Input, Item } from 'native-base';
+import { Button, Container, Content, Header, Icon, Left, Body, Title, Right } from 'native-base';
 
 const dummyUri = "https://www.fietsenwinkel.nl/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/c/o/cortina_e-u1_n3_dames_elektrische_fiets_zijaanzicht.jpg";
-const SingleItemPage = () => {
+const SingleItemPage = (props: any) => {
   return (
     <Fragment>
       <Container>
+        <Header>
+          <Left>
+            <Button transparent onPress={() => props.navigation.goBack()}>
+              <Icon name='arrow-back' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Details</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Right>
+        </Header>
         <Content>
           <SafeAreaView>
             <ScrollView>
@@ -31,6 +46,7 @@ const SingleItemPage = () => {
             </ScrollView>
           </SafeAreaView>
         </Content>
+        <FooterTabs />
       </Container>
     </Fragment>
   );

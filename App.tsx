@@ -9,10 +9,11 @@
  */
 
 import React, {Fragment} from 'react';
-import { YellowBox, StatusBar } from 'react-native';
-import { Container, Header, Content, Footer, FooterTab, Button, Text, Item, Icon, Input } from 'native-base';
+import { YellowBox } from 'react-native';
 import SearchPage from './src/pages/searchPage';
 import SingleItemPage from './src/pages/singleItemPage';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
@@ -20,6 +21,18 @@ YellowBox.ignoreWarnings([
   'Module RCTImageLoader requires',
 ]);
 
-const App = () => <SearchPage />;
+const routeConfigMap = {
+  Home: SearchPage,
+  Details: SingleItemPage,
+};
+const AppNavigator = createStackNavigator(routeConfigMap, {
+  initialRouteName: 'Home',
+  headerMode: 'none'
+});
+const AppContainer = createAppContainer(AppNavigator);
 
-export default App;
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}

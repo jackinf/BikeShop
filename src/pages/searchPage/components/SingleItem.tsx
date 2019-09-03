@@ -5,7 +5,7 @@ import {
   Text,
   Image
 } from 'react-native';
-import { Card, CardItem, Left, Right } from 'native-base';
+import { Card, CardItem, Left, Right, Body, Button } from 'native-base';
 
 interface Item {
   title: string,
@@ -16,10 +16,12 @@ interface Item {
 
 interface SingleItemProps {
   item: Item;
+  onSelected: () => void;
 }
 
 const SingleItem = (props: SingleItemProps) => {
-  const {title, price, stars, image} = props.item;
+  const { onSelected } = props;
+  const { title, price, stars, image } = props.item;
 
   return (
     <View style={styles.container}>
@@ -34,6 +36,11 @@ const SingleItem = (props: SingleItemProps) => {
           <Left>
             <Text>{price} EUR</Text>
           </Left>
+          <Body>
+            <Button transparent onPress={onSelected}>
+              <Text>View</Text>
+            </Button>
+          </Body>
           <Right>
             <Text>{stars} stars</Text>
           </Right>
