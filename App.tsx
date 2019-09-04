@@ -12,8 +12,11 @@ import React, {Fragment} from 'react';
 import { YellowBox } from 'react-native';
 import SearchPage from './src/pages/searchPage';
 import DetailsPage from './src/pages/detailsPage';
+import CartPage from './src/pages/cartPage';
+import AccountPage from './src/pages/accountPage';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { PAGES } from './src/pages/constants';
 
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
@@ -22,8 +25,10 @@ YellowBox.ignoreWarnings([
 ]);
 
 const routeConfigMap = {
-  Home: SearchPage,
-  Details: DetailsPage,
+  [PAGES.HOME]: SearchPage,
+  [PAGES.DETAILS]: DetailsPage,
+  [PAGES.CART]: CartPage,
+  [PAGES.ACCOUNT]: AccountPage,
 };
 const AppNavigator = createStackNavigator(routeConfigMap, {
   initialRouteName: 'Home',

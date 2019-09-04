@@ -2,27 +2,24 @@ import React, { Fragment } from 'react';
 import { Image, SafeAreaView, ScrollView, View, StyleSheet, Text } from 'react-native';
 import FooterTabs from '../../components/FooterTabs';
 import { Button, Container, Content, Header, Icon, Left, Body, Title, Right } from 'native-base';
+import AppHeader from '../../components/AppHeader';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { SingleBike } from '../types';
+
+interface SingleItemPageProps {
+  navigation: NavigationScreenProp<NavigationState, { item: SingleBike }>;
+}
 
 const dummyUri = "https://www.fietsenwinkel.nl/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/c/o/cortina_e-u1_n3_dames_elektrische_fiets_zijaanzicht.jpg";
-const SingleItemPage = (props: any) => {
+const SingleItemPage = (props: SingleItemPageProps) => {
+  const { navigation } = props;
+
+  const item: SingleBike = navigation.getParam("item");
+
   return (
     <Fragment>
       <Container>
-        <Header>
-          <Left>
-            <Button transparent onPress={() => props.navigation.goBack()}>
-              <Icon name='arrow-back' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Details</Title>
-          </Body>
-          <Right>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
-          </Right>
-        </Header>
+        <AppHeader title="Details" navigation={navigation} />
         <Content>
           <SafeAreaView>
             <ScrollView>
@@ -31,7 +28,7 @@ const SingleItemPage = (props: any) => {
                   <Image source={{uri: dummyUri}} style={{width: '100%', height: 260}}/>
                 </View>
                 <View style={styles.priceContainer}>
-                  <Text style={styles.price}>399 EUR</Text>
+                  <Text style={styles.price}>{item.price} EUR</Text>
                 </View>
                 <View style={styles.titleContainer}>
                   <Text style={styles.title}>Some bicycle</Text>
@@ -46,7 +43,7 @@ const SingleItemPage = (props: any) => {
             </ScrollView>
           </SafeAreaView>
         </Content>
-        <FooterTabs navigation={props.navigation} />
+        <FooterTabs navigation={navigation} />
       </Container>
     </Fragment>
   );

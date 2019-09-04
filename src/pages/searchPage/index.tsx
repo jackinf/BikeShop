@@ -11,8 +11,11 @@ import {
 import SingleItem from './components/SingleItem';
 import { Button, Container, Content, Header, Icon, Input, Item } from 'native-base';
 import FooterTabs from '../../components/FooterTabs';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
+import { PAGES } from '../constants';
+import { SingleBike } from '../types';
 
-const dummyItems = [{
+const dummyItems: SingleBike[] = [{
   title: 'Gazelle Orange C7+ HFP 2019 Dames',
   price: 1499,
   stars: 4,
@@ -74,47 +77,55 @@ const dummyItems = [{
   image: 'https://www.fietsenwinkel.nl/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/3/r/3r4a4504b_4.jpg',
 }];
 
-const SearchPage = (props: any) => (
-  <Fragment>
-    <Container>
-      <Header searchBar rounded>
-        <Item>
-          <Icon name="ios-search" />
-          <Input placeholder="Search" />
-          <Icon name="ios-people" />
-        </Item>
-        <Button transparent>
-          <Text>Search</Text>
-        </Button>
-      </Header>
-      <Content>
-        <SafeAreaView>
-          <ScrollView>
-            <View style={styles.container}>
-              <View style={styles.headerBlock}>
-                <ImageBackground source={require('./searchPageBackground.jpg')} style={styles.headerBackgroundImage}>
-                  <View style={styles.headerBackgroundImageContainer}>
-                    <Text style={styles.headerTitle}>The bike shop</Text>
-                  </View>
-                </ImageBackground>
+interface SearchPageProps {
+  navigation: NavigationScreenProp<NavigationState>;
+}
+
+function SearchPage(props: SearchPageProps) {
+  const { navigation } = props;
+
+  return (
+    <Fragment>
+      <Container>
+        <Header searchBar rounded>
+          <Item>
+            <Icon name="ios-search" />
+            <Input placeholder="Search" />
+            <Icon name="ios-people" />
+          </Item>
+          <Button transparent>
+            <Text>Search</Text>
+          </Button>
+        </Header>
+        <Content>
+          <SafeAreaView>
+            <ScrollView>
+              <View style={styles.container}>
+                <View style={styles.headerBlock}>
+                  <ImageBackground source={require('./searchPageBackground.jpg')} style={styles.headerBackgroundImage}>
+                    <View style={styles.headerBackgroundImageContainer}>
+                      <Text style={styles.headerTitle}>The bike shop</Text>
+                    </View>
+                  </ImageBackground>
+                </View>
+                <View style={styles.contentBlock}>
+                  {dummyItems.map((item, i) => (
+                    <SingleItem
+                      key={i}
+                      item={item}
+                      onSelected={() => navigation.navigate(PAGES.DETAILS, { item })}
+                    />
+                  ))}
+                </View>
               </View>
-              <View style={styles.contentBlock}>
-                {dummyItems.map((item, i) => (
-                  <SingleItem
-                    key={i}
-                    item={item}
-                    onSelected={() => props.navigation.navigate('Details')}
-                  />
-                ))}
-              </View>
-            </View>
-          </ScrollView>
-        </SafeAreaView>
-      </Content>
-      <FooterTabs navigation={props.navigation} />
-    </Container>
-  </Fragment>
-);
+            </ScrollView>
+          </SafeAreaView>
+        </Content>
+        <FooterTabs navigation={navigation} />
+      </Container>
+    </Fragment>
+  )
+}
 
 const styles = StyleSheet.create({
   container: {

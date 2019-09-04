@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { Card, CardItem, Left, Right, Body, Button } from 'native-base';
+import { Card, CardItem, Left, Right } from 'native-base';
 
 interface Item {
   title: string,
