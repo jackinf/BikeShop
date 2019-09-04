@@ -1,22 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Footer, FooterTab, Button, Text } from 'native-base';
 
-export default class FooterTabs extends Component {
-  render() {
-    return (
-      <Footer>
-        <FooterTab>
-          <Button active>
-            <Text>Search</Text>
-          </Button>
-          <Button>
-            <Text>Cart</Text>
-          </Button>
-          <Button>
-            <Text>Account</Text>
-          </Button>
-        </FooterTab>
-      </Footer>
-    );
-  }
+interface FooterTabsProps {
+  navigation: any;
+}
+
+export default function FooterTabs(props: FooterTabsProps) {
+  const { navigation } = props;
+
+  return (
+    <Footer>
+      <FooterTab>
+        <Button active onPress={() => navigation.navigate("Home")}>
+          <Text>Search</Text>
+        </Button>
+        <Button onPress={() => navigation.navigate("Home")}>
+          <Text>Cart</Text>
+        </Button>
+        <Button onPress={() => navigation.navigate("Home")}>
+          <Text>Account</Text>
+        </Button>
+      </FooterTab>
+    </Footer>
+  );
 }

@@ -11,7 +11,7 @@
 import React, {Fragment} from 'react';
 import { YellowBox } from 'react-native';
 import SearchPage from './src/pages/searchPage';
-import SingleItemPage from './src/pages/singleItemPage';
+import DetailsPage from './src/pages/detailsPage';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -23,7 +23,7 @@ YellowBox.ignoreWarnings([
 
 const routeConfigMap = {
   Home: SearchPage,
-  Details: SingleItemPage,
+  Details: DetailsPage,
 };
 const AppNavigator = createStackNavigator(routeConfigMap, {
   initialRouteName: 'Home',

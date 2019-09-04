@@ -46,7 +46,7 @@ const SingleItemPage = (props: any) => {
             </ScrollView>
           </SafeAreaView>
         </Content>
-        <FooterTabs />
+        <FooterTabs navigation={props.navigation} />
       </Container>
     </Fragment>
   );
