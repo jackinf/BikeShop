@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
-import { Image, SafeAreaView, ScrollView, View, StyleSheet, Text } from 'react-native';
-import FooterTabs from '../../components/FooterTabs';
-import { Button, Container, Content, Header, Icon, Left, Body, Title, Right } from 'native-base';
-import AppHeader from '../../components/AppHeader';
+import { Image, SafeAreaView, ScrollView, View, Text } from 'react-native';
+import { Button, Container, Content } from 'native-base';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
+
+import FooterTabs from '../../components/FooterTabs';
+import AppHeader from '../../components/AppHeader';
 import { SingleBike } from '../types';
+import styles from './styles';
 
 interface SingleItemPageProps {
   navigation: NavigationScreenProp<NavigationState, { item: SingleBike }>;
@@ -48,35 +50,5 @@ const SingleItemPage = (props: SingleItemPageProps) => {
     </Fragment>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column'
-  },
-  imageContainer: {},
-  priceContainer: {},
-  price: {
-    color: 'red',
-    marginTop: 30,
-    marginHorizontal: 10,
-    fontSize: 20,
-    fontWeight: '800'
-  },
-  titleContainer: {
-    margin: 10,
-  },
-  title: {
-    fontSize: 30
-  },
-  descriptionContainer: {
-    margin: 10,
-  },
-  description: {},
-  readMoreButtonContainer: {
-    margin: 10,
-  },
-  readMoreButton: {}
-});
 
 export default SingleItemPage;

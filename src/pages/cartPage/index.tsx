@@ -13,8 +13,9 @@ import {
   Body,
 } from 'native-base';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import AppHeader from '../../components/AppHeader';
 import { SafeAreaView, ScrollView } from 'react-native';
+
+import AppHeader from '../../components/AppHeader';
 import FooterTabs from '../../components/FooterTabs';
 import styles from './styles';
 

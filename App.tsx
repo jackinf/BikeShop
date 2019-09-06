@@ -10,12 +10,13 @@
 
 import React, {Fragment} from 'react';
 import { YellowBox } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
 import SearchPage from './src/pages/searchPage';
 import DetailsPage from './src/pages/detailsPage';
 import CartPage from './src/pages/cartPage';
 import AccountPage from './src/pages/accountPage';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 import { PAGES } from './src/pages/constants';
 
 YellowBox.ignoreWarnings([
@@ -31,7 +32,7 @@ const routeConfigMap = {
   [PAGES.ACCOUNT]: AccountPage,
 };
 const AppNavigator = createStackNavigator(routeConfigMap, {
-  initialRouteName: 'Home',
+  initialRouteName: PAGES.HOME,
   headerMode: 'none'
 });
 const AppContainer = createAppContainer(AppNavigator);
