@@ -54,12 +54,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column'
   },
-  imageContainer: {
-
-  },
-  priceContainer: {
-
-  },
+  imageContainer: {},
+  priceContainer: {},
   price: {
     color: 'red',
     marginTop: 30,
@@ -76,15 +72,11 @@ const styles = StyleSheet.create({
   descriptionContainer: {
     margin: 10,
   },
-  description: {
-
-  },
+  description: {},
   readMoreButtonContainer: {
     margin: 10,
   },
-  readMoreButton: {
-
-  }
+  readMoreButton: {}
 });
 
 export default SingleItemPage;
