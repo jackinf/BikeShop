@@ -12,6 +12,7 @@ import React, {Fragment} from 'react';
 import { YellowBox } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import SearchPage from './src/pages/searchPage';
 import DetailsPage from './src/pages/detailsPage';
@@ -31,9 +32,8 @@ const routeConfigMap = {
   [PAGES.CART]: CartPage,
   [PAGES.ACCOUNT]: AccountPage,
 };
-const AppNavigator = createStackNavigator(routeConfigMap, {
+const AppNavigator = createMaterialBottomTabNavigator(routeConfigMap, {
   initialRouteName: PAGES.HOME,
-  headerMode: 'none'
 });
 const AppContainer = createAppContainer(AppNavigator);
 
