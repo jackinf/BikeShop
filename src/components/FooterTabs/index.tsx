@@ -10,16 +10,19 @@ interface FooterTabsProps {
 export default function FooterTabs(props: FooterTabsProps) {
   const { navigation } = props;
 
+  const state: any = navigation.state;
+  const routeName = state.routeName;
+
   return (
     <Footer>
       <FooterTab>
-        <Button active onPress={() => navigation.navigate(PAGES.HOME)}>
+        <Button active={routeName === PAGES.HOME} onPress={() => navigation.navigate(PAGES.HOME)}>
           <Text>Search</Text>
         </Button>
-        <Button onPress={() => navigation.navigate(PAGES.CART)}>
+        <Button active={routeName === PAGES.CART} onPress={() => navigation.navigate(PAGES.CART)}>
           <Text>Cart</Text>
         </Button>
-        <Button onPress={() => navigation.navigate(PAGES.ACCOUNT)}>
+        <Button active={routeName === PAGES.ACCOUNT} onPress={() => navigation.navigate(PAGES.ACCOUNT)}>
           <Text>Account</Text>
         </Button>
       </FooterTab>
