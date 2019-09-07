@@ -37,6 +37,7 @@
 		E37D826AF9574DDFA86769BC /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D072F74AB4054B472F75D /* Zocial.ttf */; };
 		ECB54622369D4801830638B0 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 825859532DF047EABF3ED213 /* Ionicons.ttf */; };
 		FF95DC83424440B2807D3789 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A48F2964AE3441DBE6DB0D9 /* SimpleLineIcons.ttf */; };
+		460520D9EF7F49D38A932ECC /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F03D23A9EBB141CB98D5EE13 /* Fontisto.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F414AFBCE9087D51C05008E3 /* Pods-BikeShop-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShop-tvOS.release.xcconfig"; path = "Target Support Files/Pods-BikeShop-tvOS/Pods-BikeShop-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		F6A8C22BA1F0474F95355FB3 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		F03D23A9EBB141CB98D5EE13 /* Fontisto.ttf */ = {isa = PBXFileReference; name = "Fontisto.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				54D3CE44F2D5467B9E06B4BD /* rubicon-icon-font.ttf */,
 				4A48F2964AE3441DBE6DB0D9 /* SimpleLineIcons.ttf */,
 				884D072F74AB4054B472F75D /* Zocial.ttf */,
+				F03D23A9EBB141CB98D5EE13 /* Fontisto.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -418,6 +421,7 @@
 				7D04D7EA9C6745FE91CD2A0A /* rubicon-icon-font.ttf in Resources */,
 				FF95DC83424440B2807D3789 /* SimpleLineIcons.ttf in Resources */,
 				E37D826AF9574DDFA86769BC /* Zocial.ttf in Resources */,
+				460520D9EF7F49D38A932ECC /* Fontisto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

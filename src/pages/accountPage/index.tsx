@@ -4,7 +4,6 @@ import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { Image, SafeAreaView, ScrollView } from 'react-native';
 
 import AppHeader from '../../components/AppHeader';
-import FooterTabs from '../../components/FooterTabs';
 import styles from './styles';
 
 interface AccountPageProps {
@@ -32,7 +31,6 @@ export default function AccountPage(props: AccountPageProps) {
           </ScrollView>
         </SafeAreaView>
       </Content>
-      <FooterTabs navigation={navigation} />
     </Container>
   )
 }

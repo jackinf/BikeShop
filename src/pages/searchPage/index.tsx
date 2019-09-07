@@ -10,7 +10,6 @@ import { Button, Container, Content, Header, Icon, Input, Item } from 'native-ba
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
 import SingleItem from './components/SingleItem';
-import FooterTabs from '../../components/FooterTabs';
 import { PAGES } from '../constants';
 import styles from './styles';
 import dummyItems from './dummyItems';
@@ -19,7 +18,7 @@ interface SearchPageProps {
   navigation: NavigationScreenProp<NavigationState>;
 }
 
-function SearchPage(props: SearchPageProps) {
+export default function SearchPage(props: SearchPageProps) {
   const { navigation } = props;
 
   return (
@@ -59,10 +58,7 @@ function SearchPage(props: SearchPageProps) {
             </ScrollView>
           </SafeAreaView>
         </Content>
-        <FooterTabs navigation={navigation} />
       </Container>
     </Fragment>
   )
 }
-
-export default SearchPage;

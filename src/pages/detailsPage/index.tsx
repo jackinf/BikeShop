@@ -3,7 +3,6 @@ import { Image, SafeAreaView, ScrollView, View, Text } from 'react-native';
 import { Button, Container, Content } from 'native-base';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
-import FooterTabs from '../../components/FooterTabs';
 import AppHeader from '../../components/AppHeader';
 import { SingleBike } from '../types';
 import styles from './styles';
@@ -13,7 +12,7 @@ interface SingleItemPageProps {
 }
 
 const dummyUri = "https://www.fietsenwinkel.nl/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/c/o/cortina_e-u1_n3_dames_elektrische_fiets_zijaanzicht.jpg";
-const SingleItemPage = (props: SingleItemPageProps) => {
+export default function SingleItemPage(props: SingleItemPageProps) {
   const { navigation } = props;
 
   const item: SingleBike = navigation.getParam("item");
@@ -45,10 +44,7 @@ const SingleItemPage = (props: SingleItemPageProps) => {
             </ScrollView>
           </SafeAreaView>
         </Content>
-        <FooterTabs navigation={navigation} />
       </Container>
     </Fragment>
   );
 };
-
-export default SingleItemPage;

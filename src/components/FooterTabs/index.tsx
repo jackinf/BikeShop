@@ -5,13 +5,20 @@ import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
 interface FooterTabsProps {
   navigation: NavigationScreenProp<NavigationState>;
+  selectedRouteName?: string;
 }
 
 export default function FooterTabs(props: FooterTabsProps) {
-  const { navigation } = props;
+  const { navigation, selectedRouteName } = props;
 
-  const state: any = navigation.state;
-  const routeName = state.routeName;
+  let routeName;
+
+  if (selectedRouteName) {
+    routeName = selectedRouteName;
+  } else {
+    const state: any = navigation.state;
+    routeName = state.routeName;
+  }
 
   return (
     <Footer>
