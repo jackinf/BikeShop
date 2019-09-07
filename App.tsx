@@ -44,7 +44,6 @@ const routeConfigMap = {
   [PAGES.ACCOUNT]: { screen: AccountPage },
 };
 
-
 // noinspection JSUnusedGlobalSymbols - there are currently no type definitions for this library
 const BottomTabNavigation = createBottomTabNavigator(routeConfigMap, {
   initialRouteName: PAGES.HOME,

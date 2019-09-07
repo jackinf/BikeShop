@@ -10,4 +10,7 @@ export default StyleSheet.create({
   title: {
     fontSize: 30
   },
+  loginButtonContainer: {
+    marginHorizontal: 10,
+  }
 });
