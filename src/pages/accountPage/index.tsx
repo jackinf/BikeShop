@@ -55,16 +55,15 @@ export default function AccountPage(props: AccountPageProps) {
       const tokens = await GoogleSignin.getTokens();
       const credential = firebase.auth.GoogleAuthProvider.credential(tokens.idToken, tokens.accessToken);
 
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          // NB! this is the correct token, not the one from GoogleSignin.getTokens()!
-          user.getIdToken().then(async (idToken) => await AsyncStorage.setItem("token", idToken));
-        }
-      });
-
       firebase.auth()
         .signInWithCredential(credential)
-        .then(credential => setUser(credential.user))
+        .then(credential => {
+          if (credential.user) {
+            setUser(credential.user);
+            // NB! this is the correct token, not the one from GoogleSignin.getTokens()!
+            credential.user.getIdToken().then(async (idToken) => await AsyncStorage.setItem("token", idToken));
+          }
+        })
         .catch(err => console.log('signInWithCredential error', err));
     } catch (err) {
       console.log('GoogleSignin or firebase.auth.GoogleAuthProvider error', err);
