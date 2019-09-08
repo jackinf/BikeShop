@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Container, Content, View, Text, Button } from 'native-base';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
-import { Image, SafeAreaView, ScrollView, AsyncStorage } from 'react-native';
+import { Image, SafeAreaView, ScrollView } from 'react-native';
 import { GoogleSignin, GoogleSigninButton   } from 'react-native-google-signin';
 import firebase from 'react-native-firebase';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import AppHeader from '../../components/AppHeader';
 import styles from './styles';
