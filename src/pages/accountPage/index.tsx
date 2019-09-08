@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Container, Content, Text, View } from 'native-base';
+import React, { useState, useEffect } from 'react';
+import { Container, Content, View } from 'native-base';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import { Image, SafeAreaView, ScrollView } from 'react-native';
 import { GoogleSignin, GoogleSigninButton   } from 'react-native-google-signin';
@@ -17,40 +17,29 @@ export default function AccountPage(props: AccountPageProps) {
   const { navigation } = props;
   const [isSigninInProgress, setIsSigninInProgress] = useState(false);
 
+  useEffect(() => {
+    // Get webClientId from google-services.json file, in section client/oauth_client and take the value of client_id inside the object where client_type: 3
+    GoogleSignin.configure({ webClientId: "437889631495-63le6f2ef0v1dr2vvutl1h2ukd5m8jct.apps.googleusercontent.com" });
+  }, []);
+
   const handleSignIn = async () => {
     setIsSigninInProgress(true);
     try {
-      await GoogleSignin.configure({
-        offlineAccess: false
-      });
-
-      const data: any = await GoogleSignin.signIn();
-      console.log('data', data);
+      await GoogleSignin.signIn();
       const tokens = await GoogleSignin.getTokens();
-      console.log('tokens', tokens);
-
       const credential = firebase.auth.GoogleAuthProvider.credential(tokens.idToken, tokens.accessToken);
-      console.log('credential1', credential);
+
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          user.getIdToken().then((idToken) => console.log('firebase token', idToken)); // NB! this is the correct token!
+        }
+      });
 
       firebase.auth()
         .signInWithCredential(credential)
-        // .signInWithEmailAndPassword("", "")
-        .then(async (credential) => {
-          const tokens = await GoogleSignin.getTokens();
-          console.log('tokens2', tokens);
-          console.log('credential2', credential);
-
-          console.log(credential.user.toJSON());
-          // if (credential) {
-          //   console.log('default app user ->', credential.user.toJSON());
-          //   // setUser(JSON.stringify(credential.user))
-          // }
-        }).catch(err => {
-          console.log('err1', err);
-      });
+        .catch(err => console.log('signInWithCredential error', err));
     } catch (err) {
-      console.log('err', err);
-      // setUser(err);
+      console.log('GoogleSignin or firebase.auth.GoogleAuthProvider error', err);
     } finally {
       setIsSigninInProgress(false);
     }
