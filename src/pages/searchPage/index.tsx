@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -10,9 +10,10 @@ import { Button, Container, Content, Header, Icon, Input, Item } from 'native-ba
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
 import SingleItem from './components/SingleItem';
-import { PAGES } from '../constants';
+import { PAGES, ROUTES } from '../constants';
 import styles from './styles';
 import dummyItems from './dummyItems';
+import { SingleBike } from '../types';
 
 interface SearchPageProps {
   navigation: NavigationScreenProp<NavigationState>;
@@ -20,6 +21,19 @@ interface SearchPageProps {
 
 export default function SearchPage(props: SearchPageProps) {
   const { navigation } = props;
+  const [items, setItems] = useState<SingleBike[]>([]);
+
+  useEffect(() => {
+    fetch(ROUTES.searchBikes)
+      .then(resp => resp.json())
+      .then((resp: any) => {
+        setItems(resp);
+      })
+      .catch((e) => {
+        console.warn(e);
+        setItems(dummyItems)
+      })
+  }, []);
 
   return (
     <Fragment>
@@ -46,7 +60,7 @@ export default function SearchPage(props: SearchPageProps) {
                   </ImageBackground>
                 </View>
                 <View style={styles.contentBlock}>
-                  {dummyItems.map((item, i) => (
+                  {items.map((item, i) => (
                     <SingleItem
                       key={i}
                       item={item}

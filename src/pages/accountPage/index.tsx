@@ -62,7 +62,10 @@ export default function AccountPage(props: AccountPageProps) {
           if (credential.user) {
             setUser(credential.user);
             // NB! this is the correct token, not the one from GoogleSignin.getTokens()!
-            credential.user.getIdToken().then(async (idToken) => await AsyncStorage.setItem("token", idToken));
+            credential.user.getIdToken().then(async (idToken) => {
+              await AsyncStorage.setItem("token", idToken);
+              console.log(idToken);
+            });
           }
         })
         .catch(err => console.log('signInWithCredential error', err));
