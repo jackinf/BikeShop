@@ -26,9 +26,7 @@ export default function SearchPage(props: SearchPageProps) {
   useEffect(() => {
     fetch(ROUTES.searchBikes)
       .then(resp => resp.json())
-      .then((resp: any) => {
-        setItems(resp);
-      })
+      .then((resp: any) => setItems(resp))
       .catch((e) => {
         console.warn(e);
         setItems(dummyItems)

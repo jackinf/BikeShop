@@ -7,5 +7,6 @@ export const PAGES = {
 };
 
 export const ROUTES = {
-  searchBikes: 'http://192.168.178.21:8082/bikes/search'
+  searchBikes: 'http://192.168.178.21:8082/bikes/search',
+  getCart: 'http://192.168.178.21:8082/carts/current-user',
 };
